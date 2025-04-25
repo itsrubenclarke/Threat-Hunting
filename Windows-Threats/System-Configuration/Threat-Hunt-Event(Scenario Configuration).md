@@ -1,5 +1,5 @@
 # Threat Event (Suspicious System Configuration Changes)
-**Unauthorized Changes to System Configurations**
+**Unauthorised Changes to System Configurations**
 
 ## Steps the "Bad Actor" Took Create Logs and IoCs:
 1. Disable Windows Defender using PowerShell: `Set-MpPreference -DisableRealtimeMonitoring $true`
