@@ -16,7 +16,7 @@
 
 ### Tables Used to Detect IoCs
 
-| **Parameter Name**     | **Info** | **Description**                                                                                                              |
+| **Parameter Name**     | **Info** | **Description**                                                                                                             
 |------------------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | DeviceFileEvents       | [Link](https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceinfo-table)       | Detecting TOR download and installation, shopping list creation and deletion.                                           |
 | DeviceProcessEvents    | [Link](https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceinfo-table)       | Detecting silent TOR installation, browser and service launching.                                                       |
