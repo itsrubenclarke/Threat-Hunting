@@ -180,7 +180,7 @@ DeviceNetworkEvents
 
 ## Summary
 
-
+The user "employee" on the device "ruben-th" installed and used the Tor Browser, taking actions that raised concerns. First, "employee" downloaded the Tor Browser installer file (tor-browser-windows-x86_64-portable-14.5.exe) into the Downloads folder. Shortly after, they silently initiated the installation using a command with a silent execution switch (/S), avoiding any prompts or user notifications. Following the installation, the user created and executed the "tor.exe" process, initiating the Tor service with its configured settings. Additionally, multiple instances of "firefox.exe" associated with the Tor Browser were launched. Network activity confirmed that the device successfully connected to the Tor network, reaching remote IP addresses on typical Tor ports (e.g., port 9001), indicating the use of Tor for anonymous browsing. Furthermore, a folder named "tor-shopping-list" was created on the Desktop, containing several .txt and .json files, suggesting the preparation or storage of content possibly related to unauthorised activities. These actions collectively raise concerns about potential misuse of the Tor network for suspicious or unauthorised purposes
 
 ---
 
