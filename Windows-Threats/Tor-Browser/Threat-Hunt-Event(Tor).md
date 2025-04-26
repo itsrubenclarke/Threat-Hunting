@@ -3,14 +3,23 @@
 
 ## Steps the "Bad Actor" took Create Logs and IoCs:
 1. Download the TOR browser installer: https://www.torproject.org/download/
-2. Install it silently: ```tor-browser-windows-x86_64-portable-14.0.1.exe /S```
-3. Opens the TOR browser from the folder on the desktop
-4. Connect to TOR and browse a few sites.
+2. Install it silently using command line prompts: 
+   - ```cd C:\Users\employee\Downloads```
+   - ```tor-browser-windows-x86_64-portable-14.5.exe /S```
+4. Open the TOR browser from the folder on the desktop
+5. Connect to TOR and browse a few sites.
    - Current Dread Forum: ```dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/```
    - Dark Markets Forum: ```dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/d/DarkNetMarkets```
    - OpSec Forum: ```dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/d/OpSec```
-6. Create a file on your desktop called ```tor-shopping-list.txt``` and put a few fake (illicit) items in there
-7. Delete the file.
+6. Create a file on your desktop using CMD or the Gui called ```tor-shopping-list.txt``` and put a few fake (illicit) items in there
+    - ```cd C:\Users\employee\Desktop```
+    - ```type nul > tor-shopping-list.txt```
+    - ```dir```
+    - ```echo Bananas >> tor-shopping-list.txt```
+    - ```echo Cannabis >> tor-shopping-list.txt```
+    - ```echo Mushrooms >> tor-shopping-list.txt```
+    - ```type tor-shopping-list.txt```
+8. Delete the file.
 
 ---
 
