@@ -100,9 +100,29 @@ DeviceProcessEvents
 | order by Timestamp desc
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName, Command = ProcessCommandLine
 ```
-![image](https://github.com/user-attachments/assets/963186e9-1e68-4b93-94c6-31750a5cb53c)
+![DeviceProcessEvents](https://github.com/user-attachments/assets/963186e9-1e68-4b93-94c6-31750a5cb53c)
+
+---
+
+### 4. Searched the `DeviceNetworkEvents` Table for TOR Network Connections
+
+Searched for any indication that the TOR browser was used to establish a connection using any of the known TOR ports. The results showed user “employee” did indeed use Tor to connect to a URL.
+
+At 26 Apr 2025 12:41:16, a successful connection was made by the user "employee" from the device "ruben-th" to the remote IP address 46.229.55.118 on port 9001. The connection was made using the file "tor.exe," and the remote URL accessed was https://www.l6po2uqsh.com
 
 
+**Query used to locate events:**
+
+```kql
+DeviceNetworkEvents
+| where DeviceName  == "ruben-th"
+| where InitiatingProcessAccountName == "employee"
+| where RemotePort in ("9001", "9030", "9040", "9050", "9051", "9150", "80", "443")  
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ActionType, RemoteIP, RemotePort, RemoteUrl, InitiatingProcessFileName, InitiatingProcessFolderPath  
+| order by Timestamp desc
+```
+
+![DeviceNetworkEvents](https://github.com/user-attachments/assets/05cbf663-c87a-4de6-b41f-1afb40ba6401)
 
 
 
