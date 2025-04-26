@@ -34,7 +34,7 @@ DeviceFileEvents
 // TOR Browser is being silently installed
 // Take note of two spaces before the /S (I don't know why)
 DeviceProcessEvents
-| where ProcessCommandLine contains "tor-browser-windows-x86_64-portable-14.5.exe  /S"
+| where ProcessCommandLine startswith "tor-browser-windows"
 | project Timestamp, DeviceName, ActionType, FileName, ProcessCommandLine
 
 // TOR Browser or service was successfully installed and is present on the disk
@@ -55,7 +55,7 @@ DeviceNetworkEvents
 | order by Timestamp desc
 
 // User shopping list was created and, changed, or deleted
-DeviceFileEvent
+DeviceFileEvents
 | where FileName has_any (".txt", ".json")
 ```
 ---
