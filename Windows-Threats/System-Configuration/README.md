@@ -33,6 +33,7 @@ Additionally, a FailureAction on the 'WindowsDefender' path on **Apr 27, 2025, a
 **Query used to locate events:**
 
 ```kql
+// Detect UAC modifications or deletions in the registry
 DeviceRegistryEvents
 | where DeviceName == "ruben-th"
 | where ActionType in ("RegistryValueSet", "RegistryValueDeleted")
@@ -54,6 +55,7 @@ These activities highlight the use of elevated PowerShell and command-line opera
 **Query used to locate event:**
 
 ```kql
+// Detect suspicious processes modifying configurations
 DeviceProcessEvents
 | where DeviceName == "ruben-th"
 | where FileName in~ ("regedit.exe", "powershell.exe", "cmd.exe", "sc.exe")
@@ -75,11 +77,11 @@ The use of `powershell.exe` for network communication and repeated connections t
 **Query used to locate events:**
 
 ```kql
+// Detect unusual network activity following system changes
 DeviceNetworkEvents
-| where DeviceName == "ruben-th"
-| where RemotePort in (3389, 445, 135, 443) or RemoteUrl has_any (".onion", "raw.githubusercontent.com", "unknown-domain")
+| where RemotePort in (3389, 445, 135) or RemoteUrl has_any (".onion", "raw.githubusercontent.com", "unknown-domain")
 | where ActionType in ("ConnectionSuccess", "ConnectionFailed")
-| project Timestamp, DeviceName, RemoteIP, RemotePort, RemoteUrl, ActionType, InitiatingProcessFileName, InitiatingProcessAccountName
+| project Timestamp, RemoteIP, RemotePort, RemoteUrl, ActionType, InitiatingProcessFileName, InitiatingProcessAccountName
 ```
 
 <table><tr><td><img src="https://github.com/user-attachments/assets/f912aa7f-5561-49b6-94a9-7bc5a9645d70"  alt="DeviceNetworkEvents Github Powershell"></td></tr></table>
@@ -98,6 +100,7 @@ Additionally, a second command, `"net.exe" localgroup administrators`, was execu
 **Query used to locate events:**
 
 ```kql
+// Detect group policy modifications involving administrators
 DeviceProcessEvents
 | where DeviceName == "ruben-th"
 | where ProcessCommandLine has "administrators"
