@@ -61,9 +61,50 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, FileName, ProcessCommandLine, InitiatingProcessFileName, AccountName
 | order by Timestamp desc 
 ```
+---
+
+### 3. Searched the `DeviceNetworksEvents` Table
+
+Searched for any network activity that may give clues to malicious acts.
+
+The dataset reveals significant network activity originating from the device "ruben-th." On **Apr 27, 2025, at 13:13:28 PM**, `powershell.exe` initiated a successful connection to `raw.githubusercontent.com` (IP address `185.199.108.133`) over HTTPS (port 443). This domain is known to host scripts and files, suggesting potential script download or execution activity. 
+
+The use of `powershell.exe` for network communication and repeated connections to script-hosting domains aligns with concerns about unauthorised activities and tampering with system configurations. These events warrant further investigation to assess whether they involve the execution of malicious scripts or unauthorised system changes.
 
 
-<table><tr><td><img src="https://github.com/user-attachments/assets/8245e424-ab0e-4f2a-b360-4ac7115aee82"  alt="DeviceProcessEvents Execution Policy Bypass"></td></tr></table>
+**Query used to locate events:**
+
+```kql
+DeviceNetworkEvents
+| where DeviceName == "ruben-th"
+| where RemotePort in (3389, 445, 135, 443) or RemoteUrl has_any (".onion", "raw.githubusercontent.com", "unknown-domain")
+| where ActionType in ("ConnectionSuccess", "ConnectionFailed")
+| project Timestamp, DeviceName, RemoteIP, RemotePort, RemoteUrl, ActionType, InitiatingProcessFileName, InitiatingProcessAccountName
+```
+
+<table><tr><td><img src="https://github.com/user-attachments/assets/f912aa7f-5561-49b6-94a9-7bc5a9645d70"  alt="DeviceNetworkEvents Github Powershell"></td></tr></table>
 
 ---
+
+
+### 4. Searched the `DeviceProcessEvents` Table
+
+Further searched for unusual changes, particularly with the word "administrators" in the command line.
+
+The dataset reveals activity related to the addition of a user to the `Administrators` group on the device "thscenariovm." On **Jan 26, 2025, at 1:08:42 PM**, the command `"net.exe" localgroup administrators NewAdminAccount /add` was executed by the user `labuser`, successfully adding the account `NewAdminAccount` to the `Administrators` group. 
+
+Additionally, a second command, `"net.exe" localgroup administrators`, was executed at **Jan 26, 2025, at 1:09:56 PM**, listing the members of the `Administrators` group, which confirms the account was successfully added.
+
+**Query used to locate events:**
+
+```kql
+DeviceProcessEvents
+| where DeviceName == "ruben-th"
+| where ProcessCommandLine has "administrators"
+| project Timestamp, DeviceName, FileName, ProcessCommandLine, InitiatingProcessAccountName
+```
+<table><tr><td><img src="https://github.com/user-attachments/assets/f912aa7f-5561-49b6-94a9-7bc5a9645d70"  alt="DeviceNetworkEvents Github Powershell"></td></tr></table>
+
+---
+
 
