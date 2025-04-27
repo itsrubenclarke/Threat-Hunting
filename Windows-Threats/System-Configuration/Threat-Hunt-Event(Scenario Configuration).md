@@ -5,7 +5,7 @@
 1. Disable Windows Defender using PowerShell: `Set-MpPreference -DisableRealtimeMonitoring $true`
 2. Modify UAC settings in the registry: `Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value 0`
 3. Disable automatic updates by creating a registry key: `New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 1 -PropertyType DWORD`
-4. Create a new local administrator account: `net user NewAdminAccount Password123! /add && net localgroup administrators NewAdminAccount /add`
+4. Create a new local administrator account: `net user NewLegendAccount MPKr7LXAd#! /add && net localgroup administrators NewLegendAccount /add`
 5. Add a firewall rule to allow inbound traffic on port 3389: `New-NetFirewallRule -DisplayName "Simulate RDP Rule" -Direction Inbound -Protocol TCP -LocalPort 3389 -Action Allow`
 
 ---
@@ -50,7 +50,7 @@ DeviceProcessEvents
 ## Created By:
 - **Author Name**: Ruben Clarke
 - **Author Contact**: linkedin.com/in/itsrubenclarke/
-- **Date**: April 25, 2025
+- **Date**: April 27, 2025
 
 ## Validated By:
 - **Reviewer Name**: 
@@ -67,5 +67,5 @@ DeviceProcessEvents
 ## Revision History:
 | **Version** | **Changes**                   | **Date**         | **Modified By**   |
 |-------------|-------------------------------|------------------|-------------------|
-| 1.0         | Initial draft                  | `April 25, 2025`  | `Ruben Clarke`
+| 1.0         | Initial draft                  | `April 27, 2025`  | `Ruben Clarke`
 
