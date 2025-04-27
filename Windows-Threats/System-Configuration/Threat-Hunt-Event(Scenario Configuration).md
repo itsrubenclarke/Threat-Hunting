@@ -7,6 +7,8 @@
 3. Disable automatic updates by creating a registry key: `New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 1 -PropertyType DWORD`
 4. Create a new local administrator account: `net user NewLegendAccount MPKr7LXAd#! /add && net localgroup administrators NewLegendAccount /add`
 5. Add a firewall rule to allow inbound traffic on port 3389: `New-NetFirewallRule -DisplayName "Simulate RDP Rule" -Direction Inbound -Protocol TCP -LocalPort 3389 -Action Allow`
+6. Connect to GitHub using PowerShell `Test-NetConnection -ComputerName raw.githubusercontent.com -Port 443`
+
 
 ---
 
