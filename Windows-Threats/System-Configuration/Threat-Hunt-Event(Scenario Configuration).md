@@ -24,16 +24,19 @@
 
 ## Related Queries:
 ```kql
-// Detect UAC modifications in the registry
+// Detect UAC modifications or deletions in the registry
 DeviceRegistryEvents
-| where RegistryKey == "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" and RegistryValueName == "EnableLUA"
-| project Timestamp, RegistryKey, RegistryValueName, RegistryValueData
+| where DeviceName == "ruben-th"
+| where ActionType in ("RegistryValueSet", "RegistryValueDeleted")
+| project Timestamp, DeviceName, RegistryKey, RegistryValueName, RegistryValueData, ActionType
 
 // Detect suspicious processes modifying configurations
 DeviceProcessEvents
+| where DeviceName == "ruben-th"
 | where FileName in~ ("regedit.exe", "powershell.exe", "cmd.exe", "sc.exe")
 | where ProcessCommandLine has_any ("Set-", "Disable", "Enable", "-ExecutionPolicy", "-NoProfile", "-NonInteractive", "bypass", "New-ItemProperty")
-| project Timestamp, FileName, ProcessCommandLine, InitiatingProcessFileName, AccountName
+| project Timestamp, DeviceName, FileName, ProcessCommandLine, InitiatingProcessFileName, AccountName
+| order by Timestamp desc
 
 // Detect unusual network activity following system changes
 DeviceNetworkEvents
@@ -43,8 +46,9 @@ DeviceNetworkEvents
 
 // Detect group policy modifications involving administrators
 DeviceProcessEvents
+| where DeviceName == "ruben-th"
 | where ProcessCommandLine has "administrators"
-| project Timestamp, FileName, ProcessCommandLine, InitiatingProcessAccountName
+| project Timestamp, DeviceName, FileName, ProcessCommandLine, InitiatingProcessAccountName
 ```
 
 ---
