@@ -91,9 +91,9 @@ DeviceNetworkEvents
 
 Further searched for unusual changes, particularly with the word "administrators" in the command line.
 
-The dataset reveals activity related to the addition of a user to the `Administrators` group on the device "thscenariovm." On **Jan 26, 2025, at 1:08:42 PM**, the command `"net.exe" localgroup administrators NewAdminAccount /add` was executed by the user `labuser`, successfully adding the account `NewAdminAccount` to the `Administrators` group. 
+The dataset reveals activity related to the addition of a user to the `Administrators` group on the device "ruben-th." On **Apr 27, 2025, at 14:30:21 PM**, the command `"net.exe" localgroup administrators NewThreatAccount /add` was executed by the user `employee`, successfully adding the account `NewThreatAccount` to the `Administrators` group. 
 
-Additionally, a second command, `"net.exe" localgroup administrators`, was executed at **Jan 26, 2025, at 1:09:56 PM**, listing the members of the `Administrators` group, which confirms the account was successfully added.
+Additionally, a second command, `"net.exe" localgroup administrators`, was executed at **Apr 27, 2025, at 14:49:52 PM**, listing the members of the `Administrators` group, which confirms the account was successfully added.
 
 **Query used to locate events:**
 
@@ -103,8 +103,89 @@ DeviceProcessEvents
 | where ProcessCommandLine has "administrators"
 | project Timestamp, DeviceName, FileName, ProcessCommandLine, InitiatingProcessAccountName
 ```
-<table><tr><td><img src="https://github.com/user-attachments/assets/f912aa7f-5561-49b6-94a9-7bc5a9645d70"  alt="DeviceNetworkEvents Github Powershell"></td></tr></table>
+<table><tr><td><img src="https://github.com/user-attachments/assets/e90c54a1-d350-48e8-a6c2-ca939d3a47b2"  alt="DeviceProcessEvents Create Admin User"></td></tr></table>
 
 ---
 
+## Chronological Event Timeline
+
+### 1. Registry Modification - Delete Cached Standalone Update Binary
+- **Time:** 10:34:36 AM, April 27, 2025
+- **Event:** A command executed by cmd.exe deleted a registry value related to system updates, targeting the system update configuration.
+- **Action:** Registry value deleted.
+- **Initiating Process:** cmd.exe
+- **Registry Key:** HKEY_CURRENT_USER\SOFTWARE\Microsoft\WindowsUpdate
+- **Registry Value Name:** (Exact value not provided, assumed related to update mechanism)
+
+
+### 2. Registry Modification - Windows Defender Failure Action
+- **Time:** 10:34:38 AM, April 27, 2025
+- **Event:** A modification was made to a registry key associated with Windows Defender under user-specific settings.
+- **Action:** Registry value set (indicating possible tampering with Defender failure actions).
+- **Initiating Process:** (Likely via cmd.exe or powershell.exe based on context)
+- **Registry Key:** HKEY_CURRENT_USER\SOFTWARE\Microsoft\WindowsDefender\FailureAction
+- **Registry Value Name:** FailureAction
+
+### 3. Elevated PowerShell Commands Executed
+- **Time:** 09:25:50 AM - 09:25:52 AM, April 27, 2025
+- **Event:** Multiple commands initiated by runcommandextension.exe executed cmd.exe, launching PowerShell scripts with the -ExecutionPolicy Unrestricted flag.
+- **Action:** Elevated PowerShell execution bypassing standard execution policy.
+
+   - **Command Example:**
+`powershell.exe -ExecutionPolicy Unrestricted -NoProfile -NonInteractive -File "C:\path\to\script.ps1"`
+
+- **Initiating Process:** cmd.exe
+- **Child Process:** powershell.exe
+
+### 4. Additional PowerShell Script Execution
+- **Time:** 09:52:56 AM, April 27, 2025
+- **Event:** A new PowerShell process was started directly, executing another PowerShell script using the -ExecutionPolicy Bypass flag.
+- **Action:** Elevated PowerShell execution with unsafe parameters.
+  
+  - **Command Example:**
+`powershell.exe -ExecutionPolicy Bypass -File "C:\path\to\script.ps1"`
+
+- **Initiating Process:** powershell.exe
+
+### 5. External Connection to raw.githubusercontent.com (GitHub)
+- **Time:** 13:13:28 PM, April 27, 2025
+- **Event:** powershell.exe initiated a successful HTTPS connection to raw.githubusercontent.com (IP address 185.199.108.133), suggesting potential script download or remote resource access.
+- **Action:** Outbound network connection established.
+- **Remote Domain:** raw.githubusercontent.com
+- **Remote IP:** 185.199.108.133
+- **Initiating Process:** powershell.exe
+- **Remote Port:** 443
+
+### 6. Administrators Group Modified - New Account Added
+- **Time:** 14:30:21 PM, April 27, 2025
+- **Event:** The account NewThreatAccount was added to the local Administrators group using net.exe.
+- **Action:** New administrator account added.
+
+  - **Command:**
+`net.exe localgroup administrators NewThreatAccount /add`
+
+- **Initiating Process:** net.exe
+- **Group:** Administrators
+- **New Account Name:** NewThreatAccount
+- **Account Executing the Action:** employee
+
+### 7. Administrators Group Enumeration
+- **Time:** 14:49:52 PM, April 27, 2025
+- **Event:** A net.exe command was used to list members of the local Administrators group, confirming that NewThreatAccount had been successfully added.
+- **Action:** Administrator group enumeration.
+
+  - **Command:**
+`net.exe localgroup administrators`
+
+- **Initiating Process:** net.exe
+- **Account Executing the Action:** employee
+
+---
+
+## Summary
+
+The user `"employee"` on the device `"ruben-th"` performed a series of actions consistent with tampering with critical system configurations. Key findings include deletion of system update-related registry values, modification of Windows Defender settings, and repeated use of elevated PowerShell commands with unrestricted and bypass execution policies. Additionally, suspicious network activity was observed, with powershell.exe establishing successful outbound connections to `raw.githubusercontent.com`, suggesting potential script downloads. Further investigation revealed the addition of a new local administrator account, `NewThreatAccount`, to the Administrators group. These activities, executed using cmd.exe, powershell.exe, and net.exe, indicate deliberate attempts to weaken the system’s security posture and establish persistence. The registry changes, privilege escalations, and network communications observed strongly suggest potential malicious intent and warrant immediate investigation.
+
+## Response Taken
+Unauthorised System Configuration activity was confirmed on the endpoint `"ruben-th"` by the user `"employee"`. The device was immediately flagged for isolation to prevent further potential misuse, and the incident has been escalated to management for formal investigation. A recommendation was made to reset credentials associated with the compromised account, audit all administrator group memberships, and conduct a thorough forensic analysis of the device. Further steps, including a full security assessment and potential disciplinary action, have been advised.
 
