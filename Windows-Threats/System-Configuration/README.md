@@ -112,6 +112,10 @@ DeviceProcessEvents
 
 ## Chronological Event Timeline
 
+<details>
+  <summary> [Click to Expand]</summary>
+<p></p>  
+
 ### 1. Registry Modification - Delete Cached Standalone Update Binary
 - **Time:** 10:34:36 AM, April 27, 2025
 - **Event:** A command executed by cmd.exe deleted a registry value related to system updates, targeting the system update configuration.
@@ -182,6 +186,8 @@ DeviceProcessEvents
 
 - **Initiating Process:** net.exe
 - **Account Executing the Action:** employee
+
+</details>
 
 ---
 
