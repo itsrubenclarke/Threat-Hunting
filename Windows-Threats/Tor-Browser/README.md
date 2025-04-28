@@ -132,6 +132,10 @@ DeviceNetworkEvents
 
 ## Chronological Event Timeline 
 
+<details>
+  <summary> [Click to Expand]</summary>
+<p></p>  
+
 ### 1. File Download - TOR Installer
 
 - **Time:** `26 Apr 2025 12:31:51`
@@ -174,6 +178,8 @@ DeviceNetworkEvents
 - **Event:** The user "employee" created a folder named `tor-shopping-list` on the desktop, and created several files with names that are potentially related to their TOR browser activities.
 - **Action:** File creation detected.
 - **File Path:** `C:\Users\employee\Desktop\tor-shopping-list`
+
+</details>
 
 ---
 
