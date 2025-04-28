@@ -89,9 +89,7 @@ DeviceNetworkEvents
 ---
 
 
-### 4. Searched the `DeviceProcessEvents` Table
-
-### Analysis of `DeviceProcessEvents`
+### 4. Searched & Analysis of `DeviceProcessEvents` Table
 
 Searched for evidence of tools or scripts used to simulate logins or tamper with authentication mechanisms on the device `ruben-th`.
 
@@ -114,9 +112,12 @@ DeviceProcessEvents
 
 ---
 
-
 ## Chronological Event Timeline
 
+<details>
+  <summary> [Click to Expand]</summary>
+<p></p>  
+  
 ### 1. Login Event and Command Execution
 - **Time:** `07:10:55 AM, April 27, 2025`
 - **Event:** A login was recorded for the account `employee` from the IP address `5.45.38.62` on the device `ruben-th`.
@@ -128,6 +129,8 @@ DeviceProcessEvents
 - **Event:** Another login was recorded for the same account `employee` from the IP address `199.188.237.194` on the same device.
 - **Action:** Network connections to external IPs via `smartscreen.exe` and `SearchApp.exe` were observed shortly after, indicating legitimate user interaction.
 - **Initiating Process:** `cmd.exe`
+
+</details>
 
 ---
 
