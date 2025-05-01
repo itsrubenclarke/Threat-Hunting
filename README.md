@@ -28,5 +28,5 @@ By investigating these changes, you'll understand how to detect attempts to bypa
 ### [Threat Hunting Scenario (Impossible Travel)](https://github.com/itsrubenclarke/Threat-Hunting/blob/main/Windows-Threats/Impossible-Travel/README.md)
 Practice identifying potential account compromise by analysing login records for "impossible travel" patterns.
 In this scenario, you'll sift through authentication logs to find when a user account is accessed from geographically distant locations in a short time frame—something a legitimate user couldn’t physically do.
-This lab demonstrates how to detect suspicious login behaviour and helps you build alerts for unauthorised access based on location anomalies.
+This lab demonstrates detecting suspicious login behaviour and helps you build alerts for unauthorised access based on location anomalies.
 
