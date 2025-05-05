@@ -49,7 +49,7 @@ The scope has been refined to prioritise:
 
 The dataset reveals multiple login events for the user `employee` on the device `ruben-th`, originating from two distinct IP addresses. On **Apr 27, 2025, at 07:23:50 AM**, login activity was recorded from the IP `199.188.237.194`. Earlier, at **07:10:55 AM**, a login was recorded from the IP `5.45.38.62`. These logins occurred within a short timeframe, indicating geographically disparate access points.
 
-This activity indicates Impossible Travel, where a single account is used to log in from different locations in rapid succession. The presence of these distinct IPs suggests potential credential compromise or the use of obfuscation techniques, such as a VPN, to simulate external access. Further analysis of network and process events may provide additional context to validate this behaviour.
+This activity indicates Impossible Travel, where a single account is used to log in from different locations rapidly. These distinct IPs suggest potential credential compromise or the use of obfuscation techniques, such as a VPN, to simulate external access. Further analysis of network and process events may provide additional context to validate this behaviour.
 
 **Query used to locate event:**
 
