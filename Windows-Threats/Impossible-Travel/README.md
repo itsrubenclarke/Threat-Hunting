@@ -126,7 +126,7 @@ DeviceProcessEvents
 
 ### 2. Second Login Event from a Different Location
 - **Time:** `07:23:50 AM, April 27, 2025`
-- **Event:** Another login was recorded for the same account `employee` from the IP address `199.188.237.194` on the same device.
+- **Event:** Another login was recorded for the same account `employee` from the same device's IP address `199.188.237.194`.
 - **Action:** Network connections to external IPs via `smartscreen.exe` and `SearchApp.exe` were observed shortly after, indicating legitimate user interaction.
 - **Initiating Process:** `cmd.exe`
 
