@@ -138,7 +138,7 @@ DeviceProcessEvents
 
 The user `employee` on the device `ruben-th` exhibited activity aligned with potential suspicious behaviour. Notably, logins were recorded from two geographically distinct IP addresses within a 13-minute window. This rapid succession of access from distant locations is indicative of Impossible Travel, often suggesting compromised credentials or the use of anonymising technologies such as VPNs or proxies.
 
-Following the logins, the user executed `cmd.exe`, suggesting interactive command-line activity. Additional network activity was captured involving `smartscreen.exe` and `SearchApp.exe`, with connections to legitimate Microsoft-related infrastructure. While these processes themselves are not inherently malicious, their execution shortly after the anomalous logins strengthens the timeline linking credential use to device interaction.
+Following the logins, the user executed `cmd.exe`, suggesting interactive command-line activity. Additional network activity was captured involving `smartscreen.exe` and `SearchApp.exe`, with connections to legitimate Microsoft-related infrastructure. While these processes are not inherently malicious, their execution shortly after the anomalous logins strengthens the timeline linking credential use to device interaction.
 
 Although no evidence of advanced tools (e.g., credential manipulation scripts) was detected during this window, the observed behaviour raises concerns regarding the integrity of the user's session and account.
 
