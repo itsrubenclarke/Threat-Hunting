@@ -7,6 +7,7 @@
 - Kusto Query Language (KQL)
 - PowerShell
 
+
 ##  Scenario
 
 Management is concerned about potential tampering with critical system configurations that could weaken security defences or enable malicious activities. Recent security logs have revealed irregular modifications to registry keys and firewall rules, including attempts to disable Windows Defender and change system policies. The goal is to detect suspicious system configuration changes, such as unauthorised registry edits, firewall modifications, or service disruptions, and analyse any related security incidents. If any suspicious activity is identified, notify management for further investigation.
