@@ -28,7 +28,7 @@ Management suspects some employees may use TOR browsers to bypass network securi
 Searched for any file that had the string "tor" in it:
 
 On 26 Apr 2025 12:45:27, the user "employee" created a file named "tor-shopping-list.txt" on the device "ruben-th." The file was saved in the folder path: 
-C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe. 
+C:\Users\employee\Desktop\TorBrowser\Browser\TorBrowser\Tor\tor.exe. 
 
 This file held multiple artefacts of interest with names that suggest illicit activity.
 
