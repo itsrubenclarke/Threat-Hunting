@@ -21,6 +21,7 @@ Management is concerned about potential tampering with critical system configura
  
 ---
 
+
 ## Steps Taken
 
 ### 1. Searched the `DeviceRegistryEvents` Table
