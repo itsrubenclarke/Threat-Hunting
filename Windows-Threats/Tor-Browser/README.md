@@ -34,6 +34,8 @@ This file held multiple artefacts of interest with names that suggest illicit ac
 
 
 
+
+
 **Query used to locate events:**
 
 ```kql
