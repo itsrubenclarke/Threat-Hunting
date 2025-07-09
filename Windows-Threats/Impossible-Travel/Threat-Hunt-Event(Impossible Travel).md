@@ -1,7 +1,7 @@
 # Threat Event (Impossible Travel)
 **Anomalous Login Locations**
 
-## Steps Taken by "Bad Actor":
+## Steps Taken by "Bad Actor": Leaving IOC
 1. **Initial Login:**
    - Login to "Victim" computer from a VM using "compromised" credentials.
    - Run CMD and run "ipconfig" to generate logs.
