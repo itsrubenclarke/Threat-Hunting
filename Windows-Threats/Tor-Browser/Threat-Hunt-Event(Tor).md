@@ -1,7 +1,7 @@
 # Threat Event (Unauthorised TOR Usage)
 **Unauthorised TOR Browser Installation and Use**
 
-## Steps the "Bad Actor" took Create Logs and IoCs:
+## Steps Taken by "Bad Actor": Leaving IOC's & Logs
 1. Download the TOR browser installer: https://www.torproject.org/download/
 2. Install it silently using command line prompts: 
    - ```cd C:\Users\employee\Downloads```
