@@ -1,7 +1,7 @@
 # Threat Event (Suspicious System Configuration Changes)
 **Unauthorised Changes to System Configurations**
 
-## Steps the "Bad Actor" Took Create Logs and IoCs:
+## Steps Taken by "Bad Actor": Leaving IOC's & Logs
 1. Disable Windows Defender using PowerShell: `Set-MpPreference -DisableRealtimeMonitoring $true`
 2. Modify UAC settings in the registry: `Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value 0`
 3. Disable automatic updates by creating a registry key: `New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Value 1 -PropertyType DWORD`
